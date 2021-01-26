@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using TailSpin.SpaceGame.Web.Models;
 
 namespace TailSpin.SpaceGame.Web
@@ -61,7 +61,7 @@ namespace TailSpin.SpaceGame.Web
                 .Where(queryPredicate) // filter
                 .OrderByDescending(orderDescendingPredicate) // sort
                 .Skip(page * pageSize) // find page
-                .Take(pageSize - 1) // take items
+                .Take(pageSize) // take items
                 .AsEnumerable(); // make enumeratable
 
             return Task<IEnumerable<T>>.FromResult(result);
